@@ -62,5 +62,5 @@ h1 {
 iframe {
     border: none; /* Remove default border */
     width: 100%; /* Responsive width */
-    height: 500px; /* Set height */
+    height: 100px; /* Set height */
 }
