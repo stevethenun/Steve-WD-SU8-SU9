@@ -7,29 +7,31 @@
   <link rel="stylesheet" href="styles/main.css">
 </head>
 <body>
-	<div class="goVols">
-		<img src="https://www.thesportsdb.com/images/media/team/badge/3ph0z91564336782.png">
-
-	</div>
-  <div class="weather-container">
-    <h1>Current Weather</h1>
-    <div class="weather-info">
-      <p id="city-name">Loading...</p>
-      <p id="temperature"></p>
-      <p id="condition"></p>
+  <header>
+    <img src="https://www.thesportsdb.com/images/media/team/badge/3ph0z91564336782.png" alt="Team Logo">
+  </header>
+  
+  <div class="main-content">
+    <div class="weather-container">
+      <h1>Current Weather</h1>
+      <div class="weather-info">
+        <p id="city-name">Loading...</p>
+        <p id="temperature"></p>
+        <p id="condition"></p>
+      </div>
     </div>
-  </div>
 
-  <!-- Google Calendar Embed -->
-  <div class="calendar-container">
-    <iframe 
-        src="https://calendar.google.com/calendar/embed?src=stevenunley12%40gmail.com&ctz=America%2FChicago" 
-        style="border: 0" 
-        width="800" 
-        height="600" 
-        frameborder="0" 
-        scrolling="no">
-    </iframe>
+    <!-- Google Calendar Embed -->
+    <div class="calendar-container">
+      <iframe 
+          src="https://calendar.google.com/calendar/embed?src=stevenunley12%40gmail.com&ctz=America%2FChicago" 
+          style="border: 0" 
+          width="800" 
+          height="600" 
+          frameborder="0" 
+          scrolling="no">
+      </iframe>
+    </div>
   </div>
 
   <script>
@@ -44,7 +46,7 @@
         if (response.ok) {
           document.getElementById('city-name').innerText = data.name;
           document.getElementById('temperature').innerText = `${data.main.temp}°F`;
-          document.getElementById('condition').innerText = data.weather[0].description.toupper();
+          document.getElementById('condition').innerText = data.weather[0].description.toUpperCase();
         } else {
           document.getElementById('city-name').innerText = 'City not found';
           document.getElementById('temperature').innerText = '';
