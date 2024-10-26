@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Family Home Display - Weather</title>
+  <link rel="stylesheet" href="styles/main.css">
+</head>
+<body>
+	<div class="goVols">
+		<img src="https://www.thesportsdb.com/images/media/team/badge/3ph0z91564336782.png">
+
+	</div>
+  <div class="weather-container">
+    <h1>Current Weather</h1>
+    <div class="weather-info">
+      <p id="city-name">Loading...</p>
+      <p id="temperature"></p>
+      <p id="condition"></p>
+    </div>
+  </div>
+
+  <!-- Google Calendar Embed -->
+  <div class="calendar-container">
+    <iframe 
+        src="https://calendar.google.com/calendar/embed?src=stevenunley12%40gmail.com&ctz=America%2FChicago" 
+        style="border: 0" 
+        width="800" 
+        height="600" 
+        frameborder="0" 
+        scrolling="no">
+    </iframe>
+  </div>
+
+  <script>
+    const apiKey = '70371addbd6309194c40eef6a56349e2';
+    const city = 'Rice Lake';  // Change to your desired city
+
+    async function fetchWeather() {
+      try {
+        const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=imperial`);
+        const data = await response.json();
+
+        if (response.ok) {
+          document.getElementById('city-name').innerText = data.name;
+          document.getElementById('temperature').innerText = `${data.main.temp}°F`;
+          document.getElementById('condition').innerText = data.weather[0].description;
+        } else {
+          document.getElementById('city-name').innerText = 'City not found';
+          document.getElementById('temperature').innerText = '';
+          document.getElementById('condition').innerText = '';
+        }
+      } catch (error) {
+        document.getElementById('city-name').innerText = 'Error fetching weather';
+        console.error(error);
+      }
+    }
+
+    fetchWeather();
+  </script>
+</body>
+</html>
